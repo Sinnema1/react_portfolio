@@ -1,68 +1,193 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* Theme Colors */
+  --primary: #0D9488; /* Teal */
+  --secondary: #9333EA; /* Purple */
+  --accent: #F59E0B; /* Amber */
+  --background: #FFFFFF; /* White */
+  --text: #1E293B; /* Gunmetal Gray */
 
+  /* Typography */
+  --font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-size-base: 16px;
+  --line-height: 1.5;
+  --font-weight: 400;
+
+  /* Accessibility & Rendering */
+  font-family: var(--font-family);
+  line-height: var(--line-height);
+  font-weight: var(--font-weight);
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: var(--font-family);
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  flex-direction: column;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Headings */
+h1,
+h2,
+h3 {
+  color: var(--primary);
+  margin-bottom: 1rem;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+h1 {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  line-height: 1.1;
+  margin: 1rem 0;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+/* Links */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+a:hover {
+  color: var(--accent);
+}
+a:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* Buttons */
+button,
+.btn {
+  border: none;
+  border-radius: 4px;
+  padding: 0.5em 1em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  color: var(--background);
+  background-color: var(--primary);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-button:hover {
-  border-color: #646cff;
+button:hover,
+.btn:hover {
+  background-color: var(--accent);
+  color: var(--text);
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Cards */
+.card {
+  border: 1px solid var(--secondary);
+  border-radius: 8px;
+  background-color: var(--background);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h5 {
+  color: var(--secondary);
+}
+
+.card-text {
+  color: var(--text);
+}
+
+/* Inputs */
+input,
+textarea {
+  border: 1px solid var(--secondary);
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  color: var(--text);
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* Footer */
+footer {
+  background-color: var(--secondary);
+  color: var(--background);
+  text-align: center;
+  padding: 1rem 0;
+}
+
+footer a {
+  color: var(--background);
+  text-decoration: none;
+  margin: 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+footer a:hover {
+  color: var(--accent);
+}
+
+/* Featured Icons */
+.features-icons {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.features-icons .features-icons-item {
+  text-align: center;
+}
+
+.features-icons .features-icons-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary);
+  color: var(--background);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem auto;
+  font-size: 2rem;
+}
+
+.features-icons h3 {
+  color: var(--primary);
+}
+
+.features-icons p {
+  color: var(--text);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
   }
-  a:hover {
-    color: #747bff;
+
+  h2 {
+    font-size: 1.75rem;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .container {
+    padding: 1rem;
   }
 }
