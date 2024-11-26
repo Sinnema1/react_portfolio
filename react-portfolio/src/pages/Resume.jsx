@@ -13,7 +13,7 @@ const Resume = () => {
     'Git & GitHub',
     'RESTful APIs',
     'Agile Development',
-    'Testing (Jest, Mocha)',
+    'Conversational AI (NLU/NLP)',
   ];
 
   return (

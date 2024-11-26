@@ -1,52 +1,22 @@
-import React from "react";
-
-const projects = [
-  {
-    id: 1,
-    title: "Employee Tracker",
-    description:
-      "A command-line application for managing a company’s employee database.",
-    github: "https://github.com/Sinnema1/Employee_Tracker",
-  },
-  {
-    id: 2,
-    title: "Weather App",
-    description:
-      "A web application that displays current weather and forecasts for various locations.",
-    github: "https://github.com/Sinnema1/Weather_App",
-  },
-  {
-    id: 3,
-    title: "Vehicle Builder",
-    description: "A web-based tool for configuring and customizing vehicles.",
-    github: "https://github.com/Sinnema1/Vehicle_Builder",
-  },
-  {
-    id: 4,
-    title: "README Generator",
-    description:
-      "A Node.js application to generate professional README files based on user input.",
-    github: "https://github.com/Sinnema1/README_Generator",
-  },
-  {
-    id: 5,
-    title: "Personal Blog",
-    description:
-      "A challenge project demonstrating proficiency with JavaScript and web APIs.",
-    github:
-      "https://github.com/Sinnema1/Justin_Manning_02-Challenge_Javascript_Web_API",
-  },
-  {
-    id: 6,
-    title: "Employee Payroll Tracker",
-    description:
-      "Another challenge project showcasing advanced JavaScript concepts.",
-    github:
-      "https://github.com/Sinnema1/Justin_Manning_02-Challenge_Javascript",
-  },
-];
+import React, { useState, useEffect } from "react";
+import API from "../utils/API";
 
 const Portfolio = () => {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await API.getFeaturedProjects();
+        setProjects(response.data);
+      } catch (error) {
+        console.error("Failed to fetch projects:", error);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
   return (
     <div className="container py-4">
       <h1 className="text-center mb-4">Portfolio</h1>

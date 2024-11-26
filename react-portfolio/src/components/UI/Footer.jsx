@@ -7,7 +7,7 @@ const Footer = () => {
         <p>Connect with me:</p>
         <div className="d-flex justify-content-center">
           <a
-            href="https://github.com/yourgithub"
+            href="https://github.com/Sinnema1"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white mx-3"
@@ -16,7 +16,7 @@ const Footer = () => {
             <i className="bi-github fs-4"></i>
           </a>
           <a
-            href="https://linkedin.com/in/yourlinkedin"
+            href="https://www.linkedin.com/in/justin-manning-3ab44932/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white mx-3"
@@ -25,7 +25,7 @@ const Footer = () => {
             <i className="bi-linkedin fs-4"></i>
           </a>
           <a
-            href="https://dev.to/yourdevto"
+            href="https://dev.to/justin_01ba15bf6f"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white mx-3"
@@ -34,7 +34,7 @@ const Footer = () => {
             <i className="bi-file-code fs-4"></i>
           </a>
         </div>
-        <p className="mt-3 mb-0">© 2024 Your Name. All rights reserved.</p>
+        <p className="mt-3 mb-0">&copy; {new Date().getFullYear()} Justin Manning. All rights reserved.</p>
       </div>
     </footer>
   );
