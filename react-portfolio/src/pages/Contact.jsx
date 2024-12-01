@@ -13,12 +13,10 @@ const Contact = () => {
     message: "",
   });
 
-  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    // Clear errors as the user types
     setErrors({ ...errors, [name]: "" });
   };
 
@@ -36,11 +34,11 @@ const Contact = () => {
     setErrors({ ...errors, [name]: error });
   };
 
-  // Handle form submission
+  // Handle submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Check for errors before submitting
+    // Check for errors 
     const newErrors = {};
     Object.keys(formData).forEach((field) => {
       if (!formData[field]) {
@@ -60,14 +58,15 @@ const Contact = () => {
       // Submit form logic here
       console.log("Form submitted:", formData);
       alert("Thank you for your message!");
-      setFormData({ name: "", email: "", message: "" }); // Reset form
+      setFormData({ name: "", email: "", message: "" });
     }
   };
 
   return (
     <div className="container py-4">
       <h1 className="text-center mb-4">Contact Me</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
+        {/* Name Field */}
         <div className="mb-3">
           <label
             htmlFor="name"
@@ -78,12 +77,20 @@ const Contact = () => {
           </label>
           <input
             type="text"
-            className="form-control"
+            className={`form-control ${errors.name ? "is-invalid" : ""}`}
             id="name"
             name="name"
-            style={{ borderColor: "var(--secondary)" }}
+            value={formData.name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            style={{
+              borderColor: errors.name ? "var(--accent)" : "var(--secondary)",
+            }}
           />
+          {errors.name && <div className="invalid-feedback">{errors.name}</div>}
         </div>
+
+        {/* Email Field */}
         <div className="mb-3">
           <label
             htmlFor="email"
@@ -94,12 +101,22 @@ const Contact = () => {
           </label>
           <input
             type="email"
-            className="form-control"
+            className={`form-control ${errors.email ? "is-invalid" : ""}`}
             id="email"
             name="email"
-            style={{ borderColor: "var(--secondary)" }}
+            value={formData.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            style={{
+              borderColor: errors.email ? "var(--accent)" : "var(--secondary)",
+            }}
           />
+          {errors.email && (
+            <div className="invalid-feedback">{errors.email}</div>
+          )}
         </div>
+
+        {/* Message Field */}
         <div className="mb-3">
           <label
             htmlFor="message"
@@ -109,13 +126,25 @@ const Contact = () => {
             Message
           </label>
           <textarea
-            className="form-control"
+            className={`form-control ${errors.message ? "is-invalid" : ""}`}
             id="message"
             name="message"
             rows="5"
-            style={{ borderColor: "var(--secondary)" }}
+            value={formData.message}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            style={{
+              borderColor: errors.message
+                ? "var(--accent)"
+                : "var(--secondary)",
+            }}
           ></textarea>
+          {errors.message && (
+            <div className="invalid-feedback">{errors.message}</div>
+          )}
         </div>
+
+        {/* Submit Button */}
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
